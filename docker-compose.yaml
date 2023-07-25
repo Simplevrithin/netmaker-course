@@ -18,7 +18,7 @@ services:
       - SERVER_NAME=simplevrithin.com
       - SERVER_API_CONN_STRING=stg-nm-api.simplevrithin.com:443
       # Address of the CoreDNS server. Defaults to SERVER_HOST
-      - COREDNS_ADDR=13.215.184.60
+      - COREDNS_ADDR=52.221.180.237
       # Overrides SERVER_HOST if set. Useful for making HTTP available via different interfaces/networks.
       - SERVER_HTTP_HOST=stg-nm-api.simplevrithin.com
       # domain for your turn server
