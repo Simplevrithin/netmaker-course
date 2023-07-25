@@ -79,7 +79,6 @@ services:
   turn:
     container_name: turn
     image: gravitl/turnserver:v1.0.0
-    env_file: ./netmaker.env
     environment:
       # config-dependant vars
       - USERNAME=admin
