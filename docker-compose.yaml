@@ -13,26 +13,32 @@ services:
       # config-dependant vars
       - STUN_LIST=stun1.netmaker.io:3478,stun2.netmaker.io:3478,stun1.l.google.com:19302,stun2.l.google.com:19302
       # The domain/host IP indicating the mq broker address
-      - BROKER_ENDPOINT=wss://stg-nm-broker.simplevrithin.com
+      - BROKER_ENDPOINT=wss://broker.simplevrithin.com
       # The base domain of netmaker
       - SERVER_NAME=simplevrithin.com
-      - SERVER_API_CONN_STRING=stg-nm-api.simplevrithin.com:443
+      - SERVER_API_CONN_STRING=api.simplevrithin.com:443
       # Address of the CoreDNS server. Defaults to SERVER_HOST
-      - COREDNS_ADDR=52.221.180.237
+      - COREDNS_ADDR=54.179.112.164
       # Overrides SERVER_HOST if set. Useful for making HTTP available via different interfaces/networks.
-      - SERVER_HTTP_HOST=stg-nm-api.simplevrithin.com
+      - SERVER_HTTP_HOST=api.simplevrithin.com
       # domain for your turn server
-      - TURN_SERVER_HOST=stg-nm-turn.simplevrithin.com
+      - TURN_SERVER_HOST=turn.simplevrithin.com
       # domain of the turn api server
-      - TURN_SERVER_API_HOST=https://stg-nm-turnapi.simplevrithin.com
-
+      - TURN_SERVER_API_HOST=https://turnapi.simplevrithin.com
+      - MASTER_KEY=123456
+      - TURN_USERNAME=admin
+      - TURN_PASSWORD=123456
+      - MQ_USERNAME=admin
+      - MQ_PASSWORD=123456
+      - INSTALL_TYPE=ce
+      - NODE_ID=netmaker-server-1
   netmaker-ui:
     container_name: netmaker-ui
     image: gravitl/netmaker-ui:v0.20.2
     environment:
       # config-dependant vars
       # URL where UI will send API requests. Change based on SERVER_HOST, SERVER_HTTP_HOST, and API_PORT
-      BACKEND_URL: "https://stg-nm-api.simplevrithin.com"
+      BACKEND_URL: "https://api.simplevrithin.com"
     depends_on:
       - netmaker
     links:
@@ -84,7 +90,7 @@ services:
       - USERNAME=admin
       - PASSWORD=123456
       # domain for your turn server
-      - TURN_SERVER_HOST=stg-nm-turn.simplevrithin.com
+      - TURN_SERVER_HOST=turn.simplevrithin.com
     network_mode: "host"
     volumes:
       - turn_server:/etc/config
